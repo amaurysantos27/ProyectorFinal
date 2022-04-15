@@ -1,27 +1,62 @@
-import React, { useState } from "react";
-import Titulo from "./components/titulo";
-import numeral from "numeraljs";
-const Index = () => {
+// Importar React, {useState} desde "react"
 
+import React, { useState } from "react";
+
+// Importar ComponenteTitulo desde "./components/Titulo"
+import Titulo from "./components/titulo";
+
+// Importar fnNumeral desde "numeraljs"
+import numeral from "numeraljs";
+
+const Index = () => {
+  // crear_estado tamano && crear_set_estado setTamano
   const [tamano, setTamano] = useState(100);
+
+  // crear_estado buscar && crear_set_estado setBuscar
   const [buscar, SetBuscar] = useState(0);
+
+  // crear_estado resultado && crear_set_estado setResultado
   const [resultados, setResultados] = useState([]);
 
-  const [tiempo, setTiempo] = useState([]);
-
-
-
+  // variable GenerarArray = Generar Arreglos de Numeros Aleatorios con longitud de estado_tamano
   const GenerarArray = new Array(Number(tamano))
     .fill(undefined)
     .map((e, i) => i + 1)
     .sort(() => Math.random() - 0.5);
 
-
+  /*
+    funcionEjecutar() {
+      variable algoritmos = Arreglo [
+        objecto: {
+          colorTexto: verde,
+          nombre: "Burbuja",
+          funcion: Burbuja,
+          parametros: {arreglo: GenerarArray}
+        },
+        objecto: {
+          colorTexto: blue,
+          nombre: "QuickSort",
+          funcion: QuickSort,
+          parametros: {arreglo: GenerarArray}
+        },
+        objecto: {
+          colorTexto: red,
+          nombre: "Seleccion",
+          funcion: Seleccion,
+        },
+        objecto: {
+          colorTexto: pink,
+          nombre: "binarySearch",
+          funcion: binarySearch,
+        },
+      ]
+    }
+   */
   function Ejecutar() {
     const algoritmos = [
       {
         color: "text-green-500",
-        name: "Burbuja",
+        name: "burbuja",
         fn: Burbuja,
         params: { array: GenerarArray },
       },
@@ -33,19 +68,19 @@ const Index = () => {
       },
       {
         color: "text-red-500",
-        name: "Método de Inserción",
+        name: "insertionSort",
         fn: insertionSort,
         params: { array: GenerarArray },
       },
       {
         color: "text-pink-500",
-        name: "Búsqueda Binaria",
+        name: "binarySearch",
         fn: binarySearch,
         params: { array: GenerarArray, element: Number(buscar) },
       },
       {
         color: "text-yellow-500",
-        name: "Búsqueda Secuencial",
+        name: "busquedaSecuencial",
         fn: busquedaSecuencial,
         params: { array: GenerarArray, element: Number(buscar) },
       },
@@ -55,10 +90,9 @@ const Index = () => {
       var t1 = window.performance.now();
 
       const time = t1 - t0;
-
       return (
         <label key={name} className="p-3 m-1 font-bold text-white ">
-          <strong>{name}</strong>{" "}
+          <strong>Algoritmo {name}</strong>{" "}
           <strong className={color}>
             {numeral(time).format("0,0.0000000")}
             <strong className="ml-2 text-white">ms</strong>{" "}
@@ -66,10 +100,8 @@ const Index = () => {
         </label>
       );
     });
-    console.log(tiempo);
     setResultados(algoritmos);
   }
-
 
   /*
    function busquedaSecuencial ({parametro element, parametro array}) 
@@ -267,16 +299,12 @@ const Index = () => {
             <div className="m-8 border border-blue-800 rounded-lg shadow-xl py-11 opacity-90 bg-slate-800 p-9">
               <form className="rounded-lg bg-slate-300 p-9">
                 <div className="w-full px-3 ">
-                  <label className="mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase "
-
-
-                  >
+                  <label className="mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase ">
                     Tamaño del vector
                   </label>
                   <input
                     className="block px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-blue-500 rounded appearance-none focus:outline-none focus:bg-white"
                     type="number"
-                    id="in1"
                     onChange={(e) => setTamano(e.target.value)}
                   />
                 </div>
@@ -288,7 +316,6 @@ const Index = () => {
                   <input
                     className="block px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-blue-500 rounded appearance-none focus:outline-none focus:bg-white"
                     type="number"
-                    id="in2"
                     onChange={(e) => SetBuscar(e.target.value)}
                   />
                 </div>
