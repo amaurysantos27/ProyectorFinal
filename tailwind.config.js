@@ -5,11 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        'inputC': '#293548',
-      },
 
-    },
+
+
+    }
   },
   plugins: [],
 }
