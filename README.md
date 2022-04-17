@@ -1,1 +1,1 @@
-Link de la aplicación: https://app.netlify.com/sites/simuladordecarreras/overview
+Link de la aplicación: https://simuladordecarreras.netlify.app/
